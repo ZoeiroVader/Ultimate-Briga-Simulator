@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ex 17 - HTML</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		
+
+	</head>
+	<body>
+
+		<h2 class="alert alert-dark bg-dark text-light text-center">Briga por Comida</h2>
+
+		<div class="divPrincipal">
+			<div class="divLuta">
+				<div class="mx-auto">
+					<img src="imagens/luta1.png" class="foto" id="gordao1">
+					<div class="barra1 text-center" id="barraV1">300</div>
+					<button class="btn btn-info btn-block" onclick="menos1()" id="btn1">Apanhar</button>
+
+					<span style="display: none" id="vida1">300</span>
+
+				</div>
+			</div>
+
+			<div class="btnResete">
+				<button class="btn btn-dark btn-block" onclick="reset()">Resetar</button><br>
+
+				<button class="btn btn-dark btn-block" onclick="comecar()" id="start">Começar a batalha</button>
+			</div>
+
+			<div class="divLuta1">
+				<div class="mx-auto">
+					<img src="imagens/luta2.png" class="foto" id="gordao2">
+					<div class="barra2 text-center" id="barraV2">300</div>
+					<button class="btn btn-danger btn-block" onclick="menos2()" id="btn2">Apanhar</button>
+
+					<span style="display: none" id="vida2">300</span>
+
+				</div>
+			</div>
+
+		</div><br><br>
+
+		<div>
+			
+			<div class="text-center"><h1 id="divResultado"></h1></div>
+
+			<div class="divlog" id="log1">
+				<p id="log"></p>
+			</div>
+
+		</div>
+
+	</body>
+	<script src="index.js"></script>
+</html>
