@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+	
+    <title>Escolha seu Player</title>
+    <link rel="stylesheet" href="css/characters.css">
+</head>
+<body>
+    <div class="back">
+        <div class="title">Escolha seu Champinhom</div>
+        <div class="container">
+            <div class="img border border-light rounded">
+                <img src="img/ryu.gif" data-charname="ryu">
+                <div class="name">Ryu</div>
+            </div>
+            <div class="img border border-light rounded">
+                <img src="img/ryu.gif" class="" data-charname="ryu">
+                <div class="name">Ryu</div>
+            </div>
+            <div class="img border border-light rounded">
+                <img src="img/ryu.gif" data-charname="ryu">
+                <div class="name">Ryu</div>
+            </div>
+            <div class="img border border-light rounded">
+                <img src="img/ryu.gif" data-charname="ryu">
+                <div class="name">Ryu</div>
+            </div>
+            <div class="img border border-light rounded">
+                <img src="img/ryu.gif" data-charname="ryu">
+                <div class="name">Ryu</div>
+            </div>
+            <div class="img border border-light rounded">
+                <img src="img/ryu.gif" data-charname="ryu">
+                <div class="name">Ryu</div>
+            </div>
+            <div class="img border border-light rounded">
+                <img src="img/ryu.gif" data-charname="ryu">
+                <div class="name">Ryu</div>
+            </div>
+            <div class="img border border-light rounded">
+                <img src="img/ryu.gif" data-charname="ryu">
+                <div class="name">Ryu</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    let chars = document.getElementsByClassName("img");
+    let charName = document.getElementsByClassName("name");
+    let back = document.getElementsByClassName("back");
+    var select;
+
+    for (let i = 0; i < chars.length; i++) {
+        chars[i].addEventListener('click', () => {
+            select = chars[i];
+            select.classList.add('text-above');
+            charName[i].style.height = '25px'; 
+            charName[i].style.opacity = '1';
+            for (let i = 0; i < chars.length; i++){
+                if (chars[i] != select) {
+                    chars[i].classList.remove('text-above');
+                    charName[i].style.height = '0px'; 
+                    charName[i].style.opacity = '0';
+                }
+            }
+        });       
+    }
+
+    // back[0].addEventListener('click', () => {
+    //     for (let i = 0; i < chars.length; i++){
+    //         chars[i].classList.remove('text-above');
+    //         charName[i].style.height = '0px'; 
+    //         charName[i].style.opacity = '0';
+    //     }
+    // });
+    
+
+</script>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "ultimate-briga-simulator",
+  "version": "1.0.0",
+  "description": "Simulador de Briga de rua online",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ZoeiroVader/Ultimate-Briga-Simulator.git"
+  },
+  "keywords": [
+    "Fight-Game",
+    "Online",
+    "Socket.io",
+    "Game"
+  ],
+  "author": "ZoeiroVader",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZoeiroVader/Ultimate-Briga-Simulator/issues"
+  },
+  "homepage": "https://github.com/ZoeiroVader/Ultimate-Briga-Simulator#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  }
+}
