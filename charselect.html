@@ -19,7 +19,7 @@
                 <div class="name">Ryu</div>
             </div>
             <div class="img border border-light rounded">
-                <img src="img/02.png" class="" data-charname="ryu">
+                <img src="img/02.png" data-charname="ryu">
                 <div class="name">Zero Two</div>
             </div>
             <div class="img border border-light rounded">
@@ -50,21 +50,55 @@
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+
 <script>
     let chars = document.getElementsByClassName("img");
     let charName = document.getElementsByClassName("name");
     let back = document.getElementsByClassName("back");
     var select;
+    var ap = [];
+
+    var socket = io.connect('http://localhost:4000'); //Se conecta ao servidor
+    socket.on('character', function(position) {
+        for (let i = 0; i < chars.length; i++){
+            if (i == position) {
+                ap[1] = i;
+                if (i == ap[0]) {
+                    alert('Personagem já escolhido')
+                }else{
+                    select = chars[i];
+                    select.classList.add('text-above_2');
+                    charName[i].style.height = '25px'; 
+                    charName[i].style.opacity = '1';
+                    charName[i].style.backgroundColor = "#2900bd";  
+                }                              
+            }else{
+                chars[i].classList.remove('text-above_2');
+                charName[i].style.height = '0px'; 
+                charName[i].style.opacity = '0';
+            }
+        }
+    });
 
     for (let i = 0; i < chars.length; i++) {
         chars[i].addEventListener('click', () => {
-            select = chars[i];
-            select.classList.add('text-above');
-            charName[i].style.height = '25px'; 
-            charName[i].style.opacity = '1';
+            ap[0] = i;
+            if (i == ap[1]) {
+                alert('Personagem já escolhido')
+            }else{
+                select = chars[i];
+                select.classList.add('text-above_1');
+                charName[i].style.height = '25px'; 
+                charName[i].style.opacity = '1';
+                charName[i].style.backgroundColor = "#e3231e";  
+            }  
+        
+            socket.emit('char', position = i); //Emite o objeto temp, com os atributos date, time e temp
+            
             for (let i = 0; i < chars.length; i++){
                 if (chars[i] != select) {
-                    chars[i].classList.remove('text-above');
+                    chars[i].classList.remove('text-above_1');
                     charName[i].style.height = '0px'; 
                     charName[i].style.opacity = '0';
                 }
@@ -79,7 +113,8 @@
     //         charName[i].style.opacity = '0';
     //     }
     // });
-    
+    // charName[i].style.backgroundColor = "#2900bd";
 
 </script>
+
 </html>

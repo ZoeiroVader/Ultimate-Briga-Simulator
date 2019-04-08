@@ -160,5 +160,5 @@ function reset(){
     log.innerHTML = "";
     clearInterval(fight);
 }
-var socket = io.connect('http://localhost:4000'); //Se conecta ao servidor
+
 

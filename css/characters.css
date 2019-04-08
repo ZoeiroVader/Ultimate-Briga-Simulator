@@ -29,10 +29,10 @@
 .img:hover{
     filter: grayscale(0);   
 }
-.text-above{
+.text-above_1{
     filter: grayscale(0);
 }
-.text-above:after{
+.text-above_1:after{
     content: "1P";
     position: absolute;
     text-align: center;
@@ -42,6 +42,21 @@
     color: #e3231e;
     font-weight: 700;
 }
+
+.text-above_2{
+    filter: grayscale(0);
+}
+.text-above_2:after{
+    content: "2P";
+    position: absolute;
+    text-align: center;
+    top: -1px;
+    left: 30%;
+    font-size: 36px;
+    color: #2900bd;
+    font-weight: 700;
+}
+
 .name{
     background-color: #e3231e;
     color: #fff;
@@ -53,3 +68,4 @@
     position: absolute;
     bottom: 0px;
 }
+

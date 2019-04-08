@@ -2,7 +2,7 @@
   "name": "ultimate-briga-simulator",
   "version": "1.0.0",
   "description": "Simulador de Briga de rua online",
-  "main": "index.js",
+  "main": "Js/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
