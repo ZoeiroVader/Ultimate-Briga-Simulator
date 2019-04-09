@@ -1,7 +1,9 @@
 var counterP = 0; 
-var counterA = 0; 
-var arena = {};
-var players = {}
+var counterA = 0;
+var counterB = 0; 
+var lobby = {};
+var Player = {};
+var battle = {};
 
 var express = require('express'); //Recupera o modulo Serial express
 
@@ -26,28 +28,26 @@ app.get('/', (req, res) => { //Simplesmente devolve a index.html quando for digi
     })
 })
 
+app.get('/select', (req, res) => { //Simplesmente devolve a index.html quando for digitado no navegador localhost:4000
+    res.sendFile('charselect.html', {
+        root: path.join(__dirname, '..')
+    })
+})
+
 io.on('connection', (socket) => {//É mostrado quando alguem se conecta
     console.log("Alguem Acessou: " + socket.id);
+
     socket.on('avaliable', function (player) { 
-        players[counterP] = {
+        Player[counterP] = {
             id : socket.id,
             name : player
         }
-        if (arena[counterA] === undefined) {
-            arena[counterA] = {
-                player: players[counterP]
-            }
-            counterA++;
-        }else if(arena[counterA] === undefined){
-
-            arena[counterA] += {
-                player: players[counterP]
-            }
-            console.log(arena[counterA]);
-            
+        battle[counterP] = {
+            player : player[counterP]
         }
-        counterP++;
+        console.log(Player);
     }); 
+    
     socket.on('char', function(char) {
         socket.broadcast.emit('character', position = char )              
     })
