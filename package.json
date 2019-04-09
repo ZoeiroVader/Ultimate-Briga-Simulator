@@ -24,6 +24,7 @@
   "homepage": "https://github.com/ZoeiroVader/Ultimate-Briga-Simulator#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "nes.css": "^2.1.1",
     "socket.io": "^2.2.0"
   }
 }

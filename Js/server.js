@@ -38,14 +38,28 @@ io.on('connection', (socket) => {//É mostrado quando alguem se conecta
     console.log("Alguem Acessou: " + socket.id);
 
     socket.on('avaliable', function (player) { 
+        console.log(battle);
+        
         Player[counterP] = {
             id : socket.id,
             name : player
         }
+        console.log(Player[counterP]);
+        
         battle[counterP] = {
             player : player[counterP]
         }
-        console.log(Player);
+
+        counterP++;
+        if (battle['1'] != undefined) {
+            lobby[counterA] = {
+                players : battle
+            }
+            console.log(lobby);
+            battle = {};
+            counterA++;
+            counterP = 0;
+        }
     }); 
     
     socket.on('char', function(char) {

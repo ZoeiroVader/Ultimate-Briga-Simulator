@@ -22,7 +22,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 <script>
     var socket = io.connect('http://localhost:4000'); //Se conecta ao servidor
-    var name = prompt("Qual seu nick?");
-    socket.emit('avaliable', name = name);
+    var n = prompt("Qual seu nick?");
+    socket.emit('avaliable', name = n);
 </script>
 </html>
