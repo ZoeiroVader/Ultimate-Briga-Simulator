@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Procurando Oponente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/battle.css">
     <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Yrsa|Press+Start+2P" rel="stylesheet">
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="nes-container is-centered with-title">
+    <div class="container nes-container is-centered with-title">
         <p class="title">Avaliação</p>
         <!-- star -->
         <i class="nes-icon is-large star is-empty"></i>
@@ -28,19 +29,16 @@
 <script>
     let stars = document.getElementsByClassName("star");
     var trues = [];
-    var cont = 0, nota, total = 0, media, conta = true, outra;
+    var cont = 1, nota, total = 0, media, conta = false, outra;
     for (let i = 0; i < stars.length; i++) {
         stars[i].addEventListener('mouseover', () => {
+            conta = true; 
             for (let a = 0; a < stars.length; a++) {
                 if (a <= i) {
                     stars[a].classList.remove('is-empty');
                     trues[a] = true;
                     nota = a * 2.5;
-                    avaliacao.innerHTML = (nota);
-                    if (conta) {
-                        cont++;
-                        conta = false;
-                    }                   
+                    avaliacao.innerHTML = (nota);               
                 }else if (trues[a] == true &&  a > i) {
                     stars[a].classList.add('is-empty');
                 }                               
@@ -49,21 +47,26 @@
     }
     
     function Calc() { 
-        total += nota;
-        media = total/cont;
-        conta = true;
-        avaliacao.innerHTML = (0);
-        for (let i = 0; i < stars.length; i++) {
-            stars[i].classList.add('is-empty');
-        }
-        if (media == 0 && media <= 4.8) {
-            avg.innerHTML = (`Média geral é ${media.toFixed(2)} e não está aprovado`)
-        }else if(media >= 4.81 && media <= 5.19){
-            avg.innerHTML = (`Média geral é ${media.toFixed(2)} e está na zona neutra`)
-        }else if(media >= 5.2 && media <= 7){
-            avg.innerHTML = (`Média geral é ${media.toFixed(2)} e está Aprovado com restrições`)
-        }else if(media > 7){
-            avg.innerHTML = (`Média geral é ${media.toFixed(2)} e está Aprovado`)
+        if(conta){
+            total += nota;
+            media = total/cont;
+            cont++; nota = 0;
+            conta = false;
+            avaliacao.innerHTML = (0);
+            for (let i = 0; i < stars.length; i++) {
+                stars[i].classList.add('is-empty');
+            }
+            if (media == 0 && media <= 4.8) {
+                avg.innerHTML = (`Média geral é ${media.toFixed(2)} e não está aprovado`)
+            }else if(media >= 4.81 && media <= 5.19){
+                avg.innerHTML = (`Média geral é ${media.toFixed(2)} e está na zona neutra`)
+            }else if(media >= 5.2 && media <= 7){
+                avg.innerHTML = (`Média geral é ${media.toFixed(2)} e está Aprovado com restrições`)
+            }else if(media > 7){
+                avg.innerHTML = (`Média geral é ${media.toFixed(2)} e está Aprovado`)
+            }
+        }else{
+            alert("Selecione uma nota");
         }
     }
 </script>

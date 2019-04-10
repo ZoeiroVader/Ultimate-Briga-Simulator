@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Procurando Oponente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/battle.css">
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Yrsa|Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container nes-container screen">
+        <div class="float-left w-45">
+            <progress class="nes-progress is-success float-left" value="100" max="100"></progress><br>
+            <i class="nes-pokeball"></i>
+        </div>
+        <div class="float-right w-45">
+            <progress class="nes-progress is-success float-right" value="100" max="100"></progress>
+            <i class="nes-bulbasaur float-right"></i>
+        </div>
+    </div>
+    <div class="container nes-container with-title is-centered">
+        <p class="title">Tipo de ataque</p>
+        <label>
+            <input type="radio" class="nes-radio" name="atk" disabled />
+            <span class="nes-text is-disabled">Atacar</span>
+        </label>       
+        <label>
+            <input type="radio" class="nes-radio" name="atk" />
+            <span>Defender</span>
+        </label>        
+        <label>
+            <input type="radio" class="nes-radio" name="atk" checked/>
+            <span>Carregar</span>
+        </label> 
+        <button class="nes-btn btn-block is-primary">Agir</button>             
+    </div>
+    <!-- <div class="container nes-container with-title">
+        <p class="title">Log</p>
+        <p class="nes-container log"></p>
+    </div> -->
+</body>
+<script>
+    // var b = document.getElementsByTagName('progress');
+    // var c = document.getElementsByClassName('log');
+    // var a = setInterval(function(){ 
+    //     b[0].value++;
+    //     if (b[0].value >= 100) {
+    //         c[0].innerHTML += "<p>Carregado!</p>";
+    //         b[0].value = 0;
+    //     } 
+    // }, 50);
+</script>
+</html>
