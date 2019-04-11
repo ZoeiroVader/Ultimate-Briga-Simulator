@@ -1,0 +1,20 @@
+.menu-item{
+    display: inline !important;
+}
+.navbar-brand{
+    font-size: 2rem !important;
+}
+.snake{
+    background-color: #13a100;
+    height: 5px;
+    width: 0%;
+    display: inline-block;
+    transition: 1s all;
+}
+.apple{
+    background-color: #ce0000;
+    height: 5px;
+    width: 10px;
+    margin: 0 5px 0 0;
+    display: inline-block;
+}

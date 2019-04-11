@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Procurando Oponente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/snakebytes.css">
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Yrsa|Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar menu nav-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <i class="nes-icon trophy"></i>
+                <h1 class="navbar-brand">SnakeBytes</h1>
+                <p>Ever growing up...</p>
+            </div>
+            <div class="nav navbar-nav navbar-right menu-item">
+                <span>Sobre nóes</span>
+                <span>Sobre nóes</span>
+            </div>
+        </div>
+    </nav>
+    <div class="snake"></div>
+    <div class="apple"></div>
+</body>
+<script>
+    var size = 10;
+    var s = getElementsByClassName('snake');
+    var SnakeGrower = setInterval(function(){ 
+        s[0].style.width = size + '%';
+        size += 10;
+        if (size > 100) {
+            clearInterval(SnakeGrower);
+        } 
+    }, 1000);
+</script>
+</html>
