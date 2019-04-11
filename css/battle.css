@@ -34,4 +34,63 @@
 .nes-pokeball, .nes-bulbasaur{
     position: absolute;
     top: 300px;
+    animation-name: taken;
+    animation-duration: 1s;
+    animation-direction: alternate; 
+    animation-timing-function: ease-in-out;
+}
+.caixa{
+    position: absolute;
+    top: 300px;
+    width: 100px !important;
+}
+.atk-p1{
+    animation-name: atk-p1;
+    animation-duration: 2s;
+    animation-direction: alternate; 
+    animation-timing-function: ease-in-out;
+}
+.atk-p2{
+    animation-name: atk-p2;
+    animation-duration: 2s;
+    animation-direction: alternate; 
+    animation-timing-function: ease-in-out;
+}
+/* Animation */
+@keyframes atk-p1 {
+    0%  {left: 0px}
+    25%{
+        top: 0px;
+    }
+    50% {
+        left:190%;
+        top:300px
+    }
+    75%{
+        transform: rotate(200deg);
+    }
+    100%{
+        left: 0;
+    }
+}
+@keyframes atk-p2 {
+    0%  {left: 0px}
+    25%{
+        top: 0px;
+    }
+    50% {
+        left:-190%;
+        top:300px
+    }
+    75%{
+        transform: rotate(-200deg);
+    }
+    100%{
+        left: 0;
+    }
+}
+@keyframes taken {
+    0%  {transform: rotate(0deg);}
+    75%  {transform: rotate(-10deg);}
+    100%  {transform: rotate(0deg);}
 }

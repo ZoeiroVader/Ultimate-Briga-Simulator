@@ -13,28 +13,31 @@
 <body>
     <div class="container nes-container screen">
         <div class="float-left w-45">
-            <progress class="nes-progress is-success float-left" value="100" max="100"></progress><br>
-            <i class="nes-pokeball"></i>
+            <progress class="nes-progress is-success float-left" value="100" max="100" id="p1"></progress><br>
+            <i class="nes-pokeball" id="p1sprite"></i>
         </div>
         <div class="float-right w-45">
-            <progress class="nes-progress is-success float-right" value="100" max="100"></progress>
-            <i class="nes-bulbasaur float-right"></i>
+            <progress class="nes-progress is-success float-right" value="100" max="100" id="p2"></progress>
+            <i class="nes-bulbasaur float-right" id="p2sprite"></i>
+            <!-- <img src="img/tombstone.png" width="100px" class="caixa nes-bulbasaur float-right"> -->
         </div>
     </div>
     <div class="container nes-container with-title is-centered">
         <p class="title">Tipo de ataque</p>
-        <label>
-            <input type="radio" class="nes-radio" name="atk" disabled />
-            <span class="nes-text is-disabled">Atacar</span>
-        </label>       
-        <label>
-            <input type="radio" class="nes-radio" name="atk" />
-            <span>Defender</span>
-        </label>        
-        <label>
-            <input type="radio" class="nes-radio" name="atk" checked/>
-            <span>Carregar</span>
-        </label> 
+        <form id="Action">
+            <label>
+                <input type="radio" class="nes-radio" name="action" disabled value="a" id="atk"/>
+                <span class="nes-text is-disabled">Atacar</span>
+            </label>       
+            <label>
+                <input type="radio" class="nes-radio" name="action" value="d"/>
+                <span>Defender</span>
+            </label>        
+            <label>
+                <input type="radio" class="nes-radio" name="action" checked value="c" id="chg"/>
+                <span>Carregar</span>
+            </label>
+        </form> 
         <button class="nes-btn btn-block is-primary">Agir</button>             
     </div>
     <!-- <div class="container nes-container with-title">
@@ -43,14 +46,56 @@
     </div> -->
 </body>
 <script>
-    // var b = document.getElementsByTagName('progress');
-    // var c = document.getElementsByClassName('log');
-    // var a = setInterval(function(){ 
-    //     b[0].value++;
-    //     if (b[0].value >= 100) {
-    //         c[0].innerHTML += "<p>Carregado!</p>";
-    //         b[0].value = 0;
-    //     } 
-    // }, 50);
+    var i = 0, action;
+    var btn = document.getElementsByClassName('nes-btn');
+    var log = document.getElementsByClassName('log');
+    var span = document.getElementsByTagName('span');
+
+    var string = ("Aguardando oponente...").split('');
+
+    btn[0].addEventListener('click', function () {
+        action = Action.action.value;
+        action == "c" ? charge() : action == "d" ? defend() : attack();
+    });
+    // init player status
+    var player = {
+        a : false,
+        d : false,
+        c : false,
+        life : 100
+    }
+    //Action Methods
+    function attack() {
+        player.a = true;
+        setTimeout(function () { player.d != true ? p2.value -= 10 : p2.value -= 5; }, 999);
+        atk.disabled = true;
+        span[0].classList.add('is-disabled');
+        span[2].checked = true;
+        p1sprite.classList.add('atk-p1');
+        setTimeout(function () { p1sprite.classList.remove('atk-p1'); }, 2100); 
+    }
+    function defend() {
+        player.d = true;
+    }
+    function charge() {
+        player.c = true;
+        atk.disabled = false;
+        span[0].classList.remove('is-disabled');
+        
+    }
+    // Type Slowly;
+    function type(){
+        if (i < string.length) {
+            setTimeout(function (){
+                log[0].innerHTML += string[i];
+                i++;
+                type();
+            }, string[i] == ' ' ? 0 : 100)            
+        }
+        else if(i >= string.length){
+            console.log("FOi POrra");
+            i = 0;           
+        }       
+    }; 
 </script>
 </html>

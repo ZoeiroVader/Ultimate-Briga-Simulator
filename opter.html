@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Procurando Oponente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/battle.css">
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Yrsa|Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container nes-container is-centered with-title">
+        <p class="title">Operador Ternário</p>
+        <!-- star -->
+        <div class="nes-field">
+            <label for="name_field">Seu Salário</label>
+            <input type="number" id="sal" class="nes-input">
+        </div>
+
+        <p><span id="msg"></span></p>
+
+        <button type="button" class="nes-btn is-success" onclick="Calc()">Boom</button>
+    </div>
+</body>
+<script>
+    function Calc() {
+        sal.value < 200 ? msg.innerHTML = ("Pobre do caralho") : sal.value >= 200 && sal.value < 1200 ? msg.innerHTML = ("Pobrito") :  sal.value >= 1200 && sal.value < 2000 ? msg.innerHTML = ("Nem tão Pobrito") : msg.innerHTML = ("Burguês")
+    }
+</script>
+
+</html>
