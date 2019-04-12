@@ -34,10 +34,6 @@
 .nes-pokeball, .nes-bulbasaur{
     position: absolute;
     top: 300px;
-    animation-name: taken;
-    animation-duration: 1s;
-    animation-direction: alternate; 
-    animation-timing-function: ease-in-out;
 }
 .caixa{
     position: absolute;
@@ -49,12 +45,25 @@
     animation-duration: 2s;
     animation-direction: alternate; 
     animation-timing-function: ease-in-out;
+    z-index: 2;
 }
 .atk-p2{
     animation-name: atk-p2;
     animation-duration: 2s;
     animation-direction: alternate; 
     animation-timing-function: ease-in-out;
+    z-index: 2;
+}
+.taken1{
+    animation-name: taken1;
+    animation-duration: .5s;
+    animation-direction: alternate; 
+    animation-timing-function: ease-in-out;
+}
+.taken2{
+    animation-name: taken2;
+    animation-duration: .5s;
+    animation-direction: alternate; 
 }
 /* Animation */
 @keyframes atk-p1 {
@@ -62,9 +71,9 @@
     25%{
         top: 0px;
     }
-    50% {
+    30%{
+        top:300px;
         left:190%;
-        top:300px
     }
     75%{
         transform: rotate(200deg);
@@ -84,13 +93,19 @@
     }
     75%{
         transform: rotate(-200deg);
+        left:-190%;
     }
     100%{
         left: 0;
     }
 }
-@keyframes taken {
+@keyframes taken1 {
     0%  {transform: rotate(0deg);}
-    75%  {transform: rotate(-10deg);}
+    75%  {transform: rotate(10deg);}
+    100%  {transform: rotate(0deg);}
+}
+@keyframes taken2 {
+    0%  {transform: rotate(0deg);}
+    25%  {transform: rotate(-50deg);}
     100%  {transform: rotate(0deg);}
 }

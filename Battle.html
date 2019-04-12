@@ -40,6 +40,18 @@
         </form> 
         <button class="nes-btn btn-block is-primary">Agir</button>             
     </div>
+    <!-- Rounded dialog -->
+    <section>
+        <dialog class="nes-dialog is-rounded" id="atkWarning">
+            <form method="dialog">
+                <p class="title text-center">Você precisa carregar primeiro</p>
+                <menu class="dialog-menu">
+                    <button class="nes-btn is-primary">Fodase</button>
+                    <button class="nes-btn is-error">QSEFALOTAXISTA</button>
+                </menu>
+            </form>
+        </dialog>
+    </section>
     <!-- <div class="container nes-container with-title">
         <p class="title">Log</p>
         <p class="nes-container log"></p>
@@ -66,13 +78,19 @@
     }
     //Action Methods
     function attack() {
-        player.a = true;
-        setTimeout(function () { player.d != true ? p2.value -= 10 : p2.value -= 5; }, 999);
-        atk.disabled = true;
-        span[0].classList.add('is-disabled');
-        span[2].checked = true;
-        p1sprite.classList.add('atk-p1');
-        setTimeout(function () { p1sprite.classList.remove('atk-p1'); }, 2100); 
+        if (player.c == true) {
+            player.a = true;
+            player.c = false;
+            setTimeout(function () { player.d != true ? p2.value -= 10 : p2.value -= 5; p2sprite.classList.add('taken2');}, 510);
+            atk.disabled = true;
+            span[0].classList.add('is-disabled');
+            span[2].checked = true;
+            p1sprite.classList.add('atk-p1');
+            setTimeout(function () { p1sprite.classList.remove('atk-p1'); p2sprite.classList.remove('taken2'); }, 2100);
+        }else{
+            atkWarning.showModal();
+        } 
+        
     }
     function defend() {
         player.d = true;
@@ -80,8 +98,7 @@
     function charge() {
         player.c = true;
         atk.disabled = false;
-        span[0].classList.remove('is-disabled');
-        
+        span[0].classList.remove('is-disabled');        
     }
     // Type Slowly;
     function type(){
