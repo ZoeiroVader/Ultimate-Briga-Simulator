@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Death Battle</title>
+    <title>Procurando Oponente</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/battle.css">
     <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Yrsa|Press+Start+2P" rel="stylesheet">
@@ -15,16 +15,14 @@
         <div class="float-left w-45">
             <progress class="nes-progress is-success float-left" value="100" max="100" id="p1"></progress><br>
             <i class="nes-pokeball" id="p1sprite"></i>
-            <p id="p1Damage">-5</p>
         </div>
         <div class="float-right w-45">
             <progress class="nes-progress is-success float-right" value="100" max="100" id="p2"></progress>
             <i class="nes-bulbasaur float-right" id="p2sprite"></i>
-            <p id="p2Damage">-5</p>
             <!-- <img src="img/tombstone.png" width="100px" class="caixa nes-bulbasaur float-right"> -->
         </div>
     </div>
-    <div class="container nes-container with-title is-centered" id="act">
+    <div class="container nes-container with-title is-centered">
         <p class="title">Tipo de ataque</p>
         <form id="Action">
             <label>
@@ -54,100 +52,58 @@
             </form>
         </dialog>
     </section>
-    <div class="container nes-container with-title hidden" id="waiting">
+    <!-- <div class="container nes-container with-title">
         <p class="title">Log</p>
         <p class="nes-container log"></p>
-    </div>
+    </div> -->
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 <script>
     var i = 0, action;
     var btn = document.getElementsByClassName('nes-btn');
     var log = document.getElementsByClassName('log');
     var span = document.getElementsByTagName('span');
 
-    var socket = io.connect('http://localhost:4000'); //Se conecta ao servidor
+    var string = ("Aguardando oponente...").split('');
 
     btn[0].addEventListener('click', function () {
         action = Action.action.value;
-        action == "c" ? defineCharge() : action == "d" ? defineDefend() : defineAttack();
+        action == "c" ? charge() : action == "d" ? defend() : attack();
     });
-    // init players status
+    // init player status
     var player = {
         a : false,
         d : false,
         c : false,
         life : 100
     }
-    var otherPlayer = {
-        a : false,
-        d : false,
-        c : false,
-        life : 100
-    }
-    function defineAttack() {
-        if (!player.c) {
+    //Action Methods
+    function attack() {
+        if (player.c == true) {
             player.a = true;
-            socket.emit('playerAction', player);
-            act.classList.add('hidden');
-            waiting.classList.remove('hidden');
-            type();
-            log[0].innerHTML = ""; 
+            player.c = false;
+            setTimeout(function () { player.d != true ? p2.value -= 10 : p2.value -= 5; 
+                p2sprite.classList.add('taken2')
+                ;}, 510);
+            atk.disabled = true;
+            span[0].classList.add('is-disabled');
+            span[2].checked = true;
+            p1sprite.classList.add('atk-p1');
+            setTimeout(function () { p1sprite.classList.remove('atk-p1'); p2sprite.classList.remove('taken2'); }, 2100);
         }else{
             atkWarning.showModal();
-        }
+        } 
+        
     }
-    function defineCharge() {
-        player.c = true;
-        socket.emit('playerAction', player); 
-        act.classList.add('hidden');
-        waiting.classList.remove('hidden');
-        type();
-        log[0].innerHTML = "";
-    }
-    function defineDefend() {
+    function defend() {
         player.d = true;
-        socket.emit('playerAction', player); 
-        act.classList.add('hidden');
-        waiting.classList.remove('hidden');
-        type();
-        log[0].innerHTML = "";
     }
-    //Action Methods
-    function attack(Player, p, otherSprite, selfSprite, damage, atk, taken) {       
-        Player.a = true;
-        Player.c = false;
-        setTimeout(function () { 
-            Player.d != true ? p.value -= 10 : p.value -= 5;
-            life =  
-            otherSprite.classList.add(taken); 
-            damage.classList.add('damage-text');
-        }, 510);
-        disable();
-        span[2].checked = true;
-        selfSprite.classList.add(atk);
-        setTimeout(function () { selfSprite.classList.remove(atk); otherSprite.classList.remove(taken); damage.classList.remove('damage-text');}, 2100);     
+    function charge() {
+        player.c = true;
+        atk.disabled = false;
+        span[0].classList.remove('is-disabled');        
     }
-    function defend(Player) {
-        Player.d = true;
-    }
-    function charge(Player) {
-        Player.c = true;
-        Player.a = true; 
-        able();        
-    }
-
-    socket.on('otherAction', function(player2) {
-        otherPlayer = player2;
-        otherPlayer.c && otherPlayer.a ? attack(otherPlayer, p1, p1sprite, p2sprite, p1Damage,  'atk-p2', 'taken1') : otherPlayer.d ? defend(otherPlayer) : charge(otherPlayer);
-        player.c  && player.a? attack(player, p2, p2sprite, p1sprite, p2Damage,  'atk-p1', 'taken2') : player.d ? defend(player) : charge(player);
-        act.classList.remove('hidden');
-        waiting.classList.add('hidden');      
-    });
     // Type Slowly;
-    function type(string){
-        string = ("Aguardando oponente...").split('');
+    function type(){
         if (i < string.length) {
             setTimeout(function (){
                 log[0].innerHTML += string[i];
@@ -160,13 +116,5 @@
             i = 0;           
         }       
     }; 
-    function disable() {
-        atk.disabled = true;
-        span[0].classList.add('is-disabled');
-    }
-    function able() {
-        atk.disabled = false;
-        span[0].classList.remove('is-disabled');
-    }
 </script>
 </html>

@@ -30,6 +30,9 @@
 .w-45{
     width: 45% !important; 
 }
+.hidden{
+    display: none !important;
+}
 
 .nes-pokeball, .nes-bulbasaur{
     position: absolute;
@@ -40,6 +43,21 @@
     top: 300px;
     width: 100px !important;
 }
+#p2Damage, #p1Damage{
+    opacity: 0;
+}  
+.damage-text{
+    position: absolute;
+    color: #af0606 !important;
+    bottom: 100px;
+    right: 100px;
+    animation-name: damage;
+    animation-duration: .5s;
+    animation-direction: alternate; 
+    animation-timing-function: ease-in-out;
+    opacity: 0; 
+}
+/* Animations */
 .atk-p1{
     animation-name: atk-p1;
     animation-duration: 2s;
@@ -87,25 +105,28 @@
     25%{
         top: 0px;
     }
-    50% {
+    30%{
+        top:300px;
         left:-190%;
-        top:300px
     }
     75%{
         transform: rotate(-200deg);
-        left:-190%;
     }
     100%{
         left: 0;
     }
 }
 @keyframes taken1 {
-    0%  {transform: rotate(0deg);}
-    75%  {transform: rotate(10deg);}
-    100%  {transform: rotate(0deg);}
+    0%  {transform: rotate(0deg); top: 300px;}
+    25%  {transform: rotate(-50deg); top: 310px}
+    100%  {transform: rotate(0deg);top: 300px}
 }
 @keyframes taken2 {
-    0%  {transform: rotate(0deg);}
-    25%  {transform: rotate(-50deg);}
-    100%  {transform: rotate(0deg);}
+    0%  {transform: rotate(0deg); top: 300px;}
+    25%  {transform: rotate(-50deg); top: 310px}
+    100%  {transform: rotate(0deg);top: 300px}
+}
+@keyframes damage {
+    0%  {opacity: 1;}
+    100%  {opacity: 0; bottom: 150px}
 }

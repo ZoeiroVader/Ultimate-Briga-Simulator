@@ -4,6 +4,7 @@ var counterB = 0;
 var lobby = {};
 var Player = {};
 var battle = {};
+var ready = 0;
 
 var express = require('express'); //Recupera o modulo Serial express
 
@@ -60,7 +61,16 @@ io.on('connection', (socket) => {//É mostrado quando alguem se conecta
             counterA++;
             counterP = 0;
         }
-    }); 
+    })
+    socket.on('playerAction', function (player) {
+        ready++;
+        console.log(ready);
+        if (ready >= 2) {
+            io.sockets.emit('otherAction', player);
+            console.log("deu");
+            ready = 0;                   
+        }
+    })
     
     socket.on('char', function(char) {
         socket.broadcast.emit('character', position = char )              
