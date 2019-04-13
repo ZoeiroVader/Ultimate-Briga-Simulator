@@ -87,7 +87,7 @@
         life : 100
     }
     function defineAttack() {
-        if (!player.c) {
+        if (player.c) {
             player.a = true;
             socket.emit('playerAction', player);
             act.classList.add('hidden');
@@ -115,12 +115,10 @@
         log[0].innerHTML = "";
     }
     //Action Methods
-    function attack(Player, p, otherSprite, selfSprite, damage, atk, taken) {       
-        Player.a = true;
-        Player.c = false;
+    function attack(Player, p, otherSprite, selfSprite, damage, atk, taken, other) {       
         setTimeout(function () { 
-            Player.d != true ? p.value -= 10 : p.value -= 5;
-            life =  
+            other.d != true ? other.life -= 10 : other.life -= 0;
+            p.value = other.life; 
             otherSprite.classList.add(taken); 
             damage.classList.add('damage-text');
         }, 510);
@@ -128,20 +126,21 @@
         span[2].checked = true;
         selfSprite.classList.add(atk);
         setTimeout(function () { selfSprite.classList.remove(atk); otherSprite.classList.remove(taken); damage.classList.remove('damage-text');}, 2100);     
+        player.a = false;
+        player.c = false;
     }
     function defend(Player) {
         Player.d = true;
     }
     function charge(Player) {
         Player.c = true;
-        Player.a = true; 
         able();        
     }
 
     socket.on('otherAction', function(player2) {
         otherPlayer = player2;
-        otherPlayer.c && otherPlayer.a ? attack(otherPlayer, p1, p1sprite, p2sprite, p1Damage,  'atk-p2', 'taken1') : otherPlayer.d ? defend(otherPlayer) : charge(otherPlayer);
-        player.c  && player.a? attack(player, p2, p2sprite, p1sprite, p2Damage,  'atk-p1', 'taken2') : player.d ? defend(player) : charge(player);
+        setTimeout(function () {  otherPlayer.c && otherPlayer.a ? attack(otherPlayer, p1, p1sprite, p2sprite, p1Damage,  'atk-p2', 'taken1', player) : otherPlayer.d ? defend(otherPlayer) : charge(otherPlayer);}, 2000)
+        player.c  && player.a? attack(player, p2, p2sprite, p1sprite, p2Damage,  'atk-p1', 'taken2', otherPlayer) : player.d ? defend(player) : charge(player);
         act.classList.remove('hidden');
         waiting.classList.add('hidden');      
     });
