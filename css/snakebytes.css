@@ -1,9 +1,3 @@
-.menu-item{
-    display: inline !important;
-}
-.navbar-brand{
-    font-size: 2rem !important;
-}
 .snake{
     background-color: #13a100;
     height: 5px;
@@ -17,4 +11,32 @@
     width: 10px;
     margin: 0 5px 0 0;
     display: inline-block;
+}
+.half{
+    width: 50%;
+}
+.centralizeXY{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.centralizeY{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.centralizeX{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+body{
+    overflow: hidden;
+}
+.is-hidden{
+    display: none;
+}
+.sobre{
+    height: 80vh; 
 }

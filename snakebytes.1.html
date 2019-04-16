@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snake Bytesssss</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/snakebytes.css">
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Yrsa|Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <style>
+        
+    </style>
+</head>
+<body>
+        <section class="container row centralizeX sobre">
+            <section class="nes-container is-dark with-title what-section col-sm">
+                <h2 class="title">WHAT</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque quam, error et, distinctio voluptatem          culpa repellat fugiat, placeat eaque numquam quod nisi optio. Saepe eveniet, ad porro ex atque odio!</p>
+            </section>
+            <section class="nes-container is-dark with-title how-section col-sm">
+                <h2 class="title">HOW</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque quam, error et, distinctio voluptatem          culpa repellat fugiat, placeat eaque numquam quod nisi optio. Saepe eveniet, ad porro ex atque odio!</p>
+            </section>
+        </section>
+    <!-- <section>
+        <img src="img/screen-1.png" alt="logo" class="half centralizeXY">
+        <h1 class="centralizeXY nes-text is-success">SnakeBytesss</h1>
+    </section> -->
+    <nav class="is-centered navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+        <!-- <a class="navbar-brand" href="#">Bottom navbar</a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse mx-auto" id="navbarCollapse">
+            <form id="Action" class="container text-light">
+                <label>
+                    <input type="radio" class="nes-radio" name="action" value="a" checked/>
+                    <span class="nes-text">Atacar</span>
+                </label>       
+                <label>
+                    <input type="radio" class="nes-radio" name="action" value="d"/>
+                    <span>Defender</span>
+                </label>        
+                <label>
+                    <input type="radio" class="nes-radio" name="action" value="c"/>
+                    <span>Carregar</span>
+                </label>
+                <label>
+                    <input type="radio" class="nes-radio" name="action" value="c"/>
+                    <span>Carregar</span>
+                </label>
+                <label>
+                    <input type="radio" class="nes-radio" name="action" value="c"/>
+                    <span>Carregar</span>
+                </label>
+                <label>
+                    <input type="radio" class="nes-radio" name="action" value="c" />
+                    <span>Carregar</span>
+                </label>
+            </form>
+        </div>
+    </nav>    
+</body>
+<script>
+    var radio = document.getElementsByClassName('nes-radio');
+    for (let i = 0; i < radio.length; i++) {
+        radio[i].addEventListener('click', () => {
+            alert("ghj");
+        });       
+    }
+</script>
+</html>
