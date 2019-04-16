@@ -17,7 +17,7 @@
         <input type="hidden" value="0" id="votos2">
         <progress class="nes-progress" value="0" max="100" id="ze1"></progress>
 
-        <h1 id="qtdvotos1">Ze Droguinha</h1>
+        <h1 id="qtdvotos2">Ze Droguinha</h1>
         <input type="hidden" value="0" id="votos1">
         <progress class="nes-progress is-primary" value="0" max="100" id="ze2"></progress>
 
@@ -37,13 +37,13 @@
         votos.value = Number(votos.value) + 1;
         if(voto == 1){
             votos1.value = Number(votos1.value) + 1;
-            qtdvotos1.innerHTML = `Ze seilá: ${votos1.value}`;
+            qtdvotos1.innerHTML = (`Ze seilá: ${votos1.value}`);
             porc = (votos1.value/votos.value * 100).toFixed(0);
             ze1.value = porc;
             ze2.value = 100 - porc;
         }else{
             votos2.value = Number(votos2.value) + 1;
-            // qtdvotos2.innerHTML = `Ze Droguinha: ${votos2.value}`;
+            qtdvotos2.innerHTML = (`Ze Droguinha: ${votos2.value}`);
             porc = (votos2.value/votos.value * 100).toFixed(0);
             ze2.value = porc;
             ze1.value = 100 - porc;

@@ -90,7 +90,7 @@ section{
     clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
 }
 .talk{
-    padding: 5%;
+    padding: 7% 5% 3% 5%;
     background: linear-gradient(#000000, rgb(32, 32, 32));
     clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
     color: #fff;
@@ -105,4 +105,10 @@ section{
     background: #00471b;
     padding: 20px;
     color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+    .intro, .talk, .project, .about, .team{
+        clip-path: polygon(0 0%, 100% 0, 100% 100%, 0% 100%);
+    }
 }
