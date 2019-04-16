@@ -14,27 +14,27 @@
     </style>
 </head>
 <body>
-        <section class="container row centralizeX sobre">
-            <section class="nes-container is-dark with-title what-section col-sm">
-                <h2 class="title">WHAT</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque quam, error et, distinctio voluptatem          culpa repellat fugiat, placeat eaque numquam quod nisi optio. Saepe eveniet, ad porro ex atque odio!</p>
-            </section>
-            <section class="nes-container is-dark with-title how-section col-sm">
-                <h2 class="title">HOW</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque quam, error et, distinctio voluptatem          culpa repellat fugiat, placeat eaque numquam quod nisi optio. Saepe eveniet, ad porro ex atque odio!</p>
-            </section>
+    <!-- <section class="row w-100 h-100 position-absolute">
+        <section class="nes-container is-dark with-title what-section col-sm">
+            <h2 class="title">WHAT</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque quam, error et, distinctio voluptatem          culpa repellat fugiat, placeat eaque numquam quod nisi optio. Saepe eveniet, ad porro ex atque odio!</p>
         </section>
-    <!-- <section>
-        <img src="img/screen-1.png" alt="logo" class="half centralizeXY">
-        <h1 class="centralizeXY nes-text is-success">SnakeBytesss</h1>
+        <section class="nes-container is-dark with-title how-section col-sm">
+            <h2 class="title">HOW</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque quam, error et, distinctio voluptatem          culpa repellat fugiat, placeat eaque numquam quod nisi optio. Saepe eveniet, ad porro ex atque odio!</p>
+        </section>
     </section> -->
-    <nav class="is-centered navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+    <section>
+        <img src="img/snake-export.png" alt="logo" class="half centralizeXY">
+        <h1 class="nes-text is-primary centralizeX title-logo">SnakeBytesss</h1>
+    </section>
+    <nav class="is-centered navbar fixed-bottom navbar-expand-sm Pborder text-dark">
         <!-- <a class="navbar-brand" href="#">Bottom navbar</a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse mx-auto" id="navbarCollapse">
-            <form id="Action" class="container text-light">
+            <form id="Action" class="container">
                 <label>
                     <input type="radio" class="nes-radio" name="action" value="a" checked/>
                     <span class="nes-text">Atacar</span>
@@ -67,7 +67,7 @@
     var radio = document.getElementsByClassName('nes-radio');
     for (let i = 0; i < radio.length; i++) {
         radio[i].addEventListener('click', () => {
-            alert("ghj");
+
         });       
     }
 </script>
