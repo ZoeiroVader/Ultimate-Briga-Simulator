@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="jsSnake"></canvas>
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.4.0.min.js"
+  integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+  crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        var $canvas = $('#jsSnake'); //select it with jQuery
+        $canvas.attr('width', 300); //set its width
+        $canvas.attr('height', 300); //and height
+        var canvas = $canvas[0]; //get the actual dom element
+        var ctx = canvas.getContext('2d'); //get the context
+        ctx.fillStyle = '#fe57a1'; //hot pink!
+        ctx.fillRect(0, 0, 300, 300); //fill a rectangle (x, y, width, height)
+    });
+</script>
+</html>
