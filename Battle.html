@@ -15,12 +15,14 @@
         <div class="float-left w-45">
             <progress class="nes-progress is-success float-left" value="100" max="100" id="p1"></progress><br>
             <i class="nes-pokeball" id="p1sprite"></i>
-            <p id="p1Damage">-5</p>
+            <p id="p1Damage">-10</p>
+            <p id="p1Shield"><img src="img/shildpng.png" height="50px" alt=""></p>
         </div>
         <div class="float-right w-45">
             <progress class="nes-progress is-success float-right" value="100" max="100" id="p2"></progress>
             <i class="nes-bulbasaur float-right" id="p2sprite"></i>
-            <p id="p2Damage">-5</p>
+            <p id="p2Damage">-10</p>
+            <p id="p2Shield"><img src="img/shildpng.png" height="50px" alt=""></p>
             <!-- <img src="img/tombstone.png" width="100px" class="caixa nes-bulbasaur float-right"> -->
         </div>
     </div>
@@ -129,8 +131,10 @@
         player.a = false;
         player.c = false;
     }
-    function defend(Player) {
-        Player.d = true;
+    function defend(Player, Shield) {
+        Player.d = false;
+        Shield.classList.add('damage-text');
+        setTimeout(function(){Shield.classList.remove('damage-text')}, 500);
     }
     function charge(Player) {
         Player.c = true;
@@ -139,8 +143,8 @@
 
     socket.on('otherAction', function(player2) {
         otherPlayer = player2;
-        setTimeout(function () {  otherPlayer.c && otherPlayer.a ? attack(otherPlayer, p1, p1sprite, p2sprite, p1Damage,  'atk-p2', 'taken1', player) : otherPlayer.d ? defend(otherPlayer) : charge(otherPlayer);}, 2000)
-        player.c  && player.a? attack(player, p2, p2sprite, p1sprite, p2Damage,  'atk-p1', 'taken2', otherPlayer) : player.d ? defend(player) : charge(player);
+        setTimeout(function () {  otherPlayer.c && otherPlayer.a ? attack(otherPlayer, p1, p1sprite, p2sprite, p1Damage,  'atk-p2', 'taken1', player) : otherPlayer.d ? defend(otherPlayer, p2Shield) : charge(otherPlayer, p2Shield);}, 2000)
+        player.c  && player.a? attack(player, p2, p2sprite, p1sprite, p2Damage,  'atk-p1', 'taken2', otherPlayer) : player.d ? defend(player, p1Shield) : charge(player);
         act.classList.remove('hidden');
         waiting.classList.add('hidden');      
     });

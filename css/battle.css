@@ -43,7 +43,7 @@
     top: 300px;
     width: 100px !important;
 }
-#p2Damage, #p1Damage{
+#p2Damage, #p1Damage, #p1Shield, #p2Shield{
     opacity: 0;
 }  
 .damage-text{
